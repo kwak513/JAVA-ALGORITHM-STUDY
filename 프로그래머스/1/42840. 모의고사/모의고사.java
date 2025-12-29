@@ -10,11 +10,11 @@ class Solution {
         ArrayList<Integer> supoja3 = new ArrayList<>();
         
         // 수포자 1, 2, 3번의 정답 배열 만들기
+        int[] supoja1Hubo = {1, 2, 3, 4, 5};
+        int[] supoja2Hubo = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] supoja3Hubo = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+        
         for(int i = 0; i < answerSize; i++){
-            int[] supoja1Hubo = {1, 2, 3, 4, 5};
-            int[] supoja2Hubo = {2, 1, 2, 3, 2, 4, 2, 5};
-            int[] supoja3Hubo = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
-            
             supoja1.add(supoja1Hubo[i % 5]);
             supoja2.add(supoja2Hubo[i % 8]);
             supoja3.add(supoja3Hubo[i % 10]);
