@@ -38,6 +38,14 @@ class Solution {
 1.
 Arrays.sort(numbersToString, Collections.reverseOrder((a, b) -> (a + b).compareTo(b + a)));
 
+- a.compareTo(b) 
+    - a < b: -1
+    - a == b: 0
+    - a > b: 1
+- Arrays.sort(arr, 정렬 기준)
+    - 정렬 기준이 -1, 0 : 그대로
+    - 정렬 기준이 1: 순서 바꾸기
+
 2. 
 - StringBuilder 생성
 - append
