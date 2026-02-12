@@ -1,72 +1,59 @@
 import java.util.*;
-
 class Solution {
     public int[] solution(int[] answers) {
+        int answerLength = answers.length;
         
-        int answerSize = answers.length;
+        int[] pattern1 = {1, 2, 3, 4, 5};
+        int[] pattern2 = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] pattern3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
         
-        ArrayList<Integer> supoja1 = new ArrayList<>();
-        ArrayList<Integer> supoja2 = new ArrayList<>();
-        ArrayList<Integer> supoja3 = new ArrayList<>();
-        
-        // 수포자 1, 2, 3번의 정답 배열 만들기
-        int[] supoja1Hubo = {1, 2, 3, 4, 5};
-        int[] supoja2Hubo = {2, 1, 2, 3, 2, 4, 2, 5};
-        int[] supoja3Hubo = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
-        
-        for(int i = 0; i < answerSize; i++){
-            supoja1.add(supoja1Hubo[i % 5]);
-            supoja2.add(supoja2Hubo[i % 8]);
-            supoja3.add(supoja3Hubo[i % 10]);
+        int[] answer1 = new int[answerLength];
+        int[] answer2 = new int[answerLength];
+        int[] answer3 = new int[answerLength];
+            
+            
+        for(int i = 0; i < answerLength; i++){
+            answer1[i] = pattern1[i % 5];
+            answer2[i] = pattern2[i % 8];
+            answer3[i] = pattern3[i % 10];
         }
         
-        // 수포자 1, 2, 3번의 정답 개수 저장
-        int supoja1RightNum = 0;
-        int supoja2RightNum = 0;
-        int supoja3RightNum = 0;
+        int count1 = 0;
+        int count2 = 0;
+        int count3 = 0;
         
-        // 몇 개가 정답인지 확인
-        for(int j = 0; j < answerSize; j++){
-            if(answers[j] == supoja1.get(j)){
-                supoja1RightNum++;
+        for(int j = 0; j < answerLength; j++){
+            if(answers[j] == answer1[j]){
+                count1++;
             }
-            if(answers[j] == supoja2.get(j)){
-                supoja2RightNum++;
+            if(answers[j] == answer2[j]){
+                count2++;
             }
-            if(answers[j] == supoja3.get(j)){
-                supoja3RightNum++;
+            if(answers[j] == answer3[j]){
+                count3++;
             }
         }
         
-        // 가장 많이 맞은 사람의 정답 개수
-        int maxRightNum = Math.max(Math.max(supoja1RightNum, supoja2RightNum), supoja3RightNum);
+        List<Integer> returnPeople = new ArrayList<>();
         
-        ArrayList<Integer> bestSupoja = new ArrayList<>();
+        int max = Math.max(Math.max(count1, count2), count3);
         
-        // 최다 득점자를 ArrayList에 저장
-        if(maxRightNum == supoja1RightNum){
-            bestSupoja.add(1);
+        if(max == count1){
+            returnPeople.add(1);
         }
-        if(maxRightNum == supoja2RightNum){
-            bestSupoja.add(2);
+        if(max == count2){
+            returnPeople.add(2);
         }
-        if(maxRightNum == supoja3RightNum){
-            bestSupoja.add(3);
+        if(max == count3){
+            returnPeople.add(3);
         }
         
-        // 최다 득점자 ArrayList -> int[] 배열로 변환
-        int bestSupojaNum = bestSupoja.size();
-        int[] answer = new int[bestSupojaNum];
+        int[] returnAnswer = new int[returnPeople.size()];
         
-        for(int p = 0; p < bestSupojaNum; p++){
-            answer[p] = bestSupoja.get(p);
+        for(int a = 0; a < returnPeople.size(); a++){
+            returnAnswer[a] = returnPeople.get(a);
         }
         
-        return answer;
-        
+        return returnAnswer;
     }
 }
-
-/*
-1. Math.max: 인자 2개만 가능
-*/
